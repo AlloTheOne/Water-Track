@@ -67,20 +67,22 @@ struct Form: View {
     @State var activity = 20
     @State var weather = "cold"
     @State var showDrop: Bool = false
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+        @GestureState private var dragOffset = CGSize.zero
     var body: some View {
         NavigationView {
             VStack(spacing: 0){
                 VStack(alignment: .trailing) {
                     HStack { Spacer() }
-//                    Button {
-//                    } label: {
-//                        Text("Set Interval")
-//                            .frame(width: 150)
-//                            .frame(height: 55)
-//                            .background(Color.white)
-//                            .cornerRadius(10)
-//                            .padding(.top)
-//                    }
+                    //                    Button {
+                    //                    } label: {
+                    //                        Text("Set Interval")
+                    //                            .frame(width: 150)
+                    //                            .frame(height: 55)
+                    //                            .background(Color.white)
+                    //                            .cornerRadius(10)
+                    //                            .padding(.top)
+                    //                    }
                 }
                 .frame(height: 150)
                 .padding(.trailing)
@@ -88,15 +90,15 @@ struct Form: View {
                 .clipShape(RoundedShape(corners: [.bottomRight]))
                 .ignoresSafeArea()
                 
-//                VStack {
-//                    HStack { Spacer() }
-//                    Text(" ")
-//                }
-//                .frame(height: 90)
-//                .padding(.trailing)
-//                .background(Color.red)
-//                .clipShape(RoundedShape(corners: [.topLeft]))
-            
+                //                VStack {
+                //                    HStack { Spacer() }
+                //                    Text(" ")
+                //                }
+                //                .frame(height: 90)
+                //                .padding(.trailing)
+                //                .background(Color.red)
+                //                .clipShape(RoundedShape(corners: [.topLeft]))
+                
                 Spacer()
                 VStack {
                     LabeledContent {
@@ -110,10 +112,10 @@ struct Form: View {
                                 .cornerRadius(10)
                                 .padding()
                             //                            .padding(.horizontal)
-                                //.padding(.leading, 80)
+                            //.padding(.leading, 80)
                             
-                        
-                                
+                            
+                            
                         }
                     } label: {
                         Text("your weight in kg")
@@ -157,36 +159,36 @@ struct Form: View {
                     .padding(.top)
                     
                     
-//                    LabeledContent {
-//                        Picker("Option Picker", selection: $weather) {
-//                            Text("Cold").tag("Cold")
-//                            Text("Warm").tag("Warm")
-//                            Text("Hot").tag("Hot")
-//                        }.pickerStyle(MenuPickerStyle())
-//                            .frame(width: 90)
-//                            .frame(height: 35)
-//                            .tint(Color.white)
-//                            .background(Color("Blue"))
-//                            .cornerRadius(10)
-//                            .padding(.horizontal)
-//                    } label: {
-//                        Text("Weather")
-//                            .padding(.leading, 70)
-//                    }
-//                    .tint(Color.black)
-//                    .frame(maxWidth: .infinity)
-//                    .frame(height: 55)
-//                    .background(Color.white)
-//                    .cornerRadius(10)
-//                    .shadow(color: Color("lightShadow"), radius: 5, x: 0, y: 0.5)
-//                    .padding(.horizontal)
-//                    .padding(.top)
-//    
+                    //                    LabeledContent {
+                    //                        Picker("Option Picker", selection: $weather) {
+                    //                            Text("Cold").tag("Cold")
+                    //                            Text("Warm").tag("Warm")
+                    //                            Text("Hot").tag("Hot")
+                    //                        }.pickerStyle(MenuPickerStyle())
+                    //                            .frame(width: 90)
+                    //                            .frame(height: 35)
+                    //                            .tint(Color.white)
+                    //                            .background(Color("Blue"))
+                    //                            .cornerRadius(10)
+                    //                            .padding(.horizontal)
+                    //                    } label: {
+                    //                        Text("Weather")
+                    //                            .padding(.leading, 70)
+                    //                    }
+                    //                    .tint(Color.black)
+                    //                    .frame(maxWidth: .infinity)
+                    //                    .frame(height: 55)
+                    //                    .background(Color.white)
+                    //                    .cornerRadius(10)
+                    //                    .shadow(color: Color("lightShadow"), radius: 5, x: 0, y: 0.5)
+                    //                    .padding(.horizontal)
+                    //                    .padding(.top)
+                    //
                     Spacer()
                     
-//                    ForEach(vm.savedEntities) { entity in
-//                       // Text(entity.waterIntake ?? 0.0)
-//                    }
+                    //                    ForEach(vm.savedEntities) { entity in
+                    //                       // Text(entity.waterIntake ?? 0.0)
+                    //                    }
                     
                     Button {
                         guard !wightIn.isEmpty else { return }
@@ -210,23 +212,47 @@ struct Form: View {
                     .fullScreenCover(isPresented: $showDrop) {
                         ContentView()
                     }
-//                    Button {
-//                        guard !wightIn.isEmpty else { return }
-////                        vm.addItem(activityIn: wightIn)
-//                        wightIn = ""
-//                    } label: {
-//                        Text("Reset")
-//                            .font(.headline)
-//                            .foregroundColor(.white)
-//                            .frame(maxWidth: .infinity)
-//                            .frame(height: 55)
-//                            .background(Color("lightShadow"))
-//                            .cornerRadius(10)
-//                    }
-//                    .padding(.horizontal)
+                    //                    Button {
+                    //                        guard !wightIn.isEmpty else { return }
+                    ////                        vm.addItem(activityIn: wightIn)
+                    //                        wightIn = ""
+                    //                    } label: {
+                    //                        Text("Reset")
+                    //                            .font(.headline)
+                    //                            .foregroundColor(.white)
+                    //                            .frame(maxWidth: .infinity)
+                    //                            .frame(height: 55)
+                    //                            .background(Color("lightShadow"))
+                    //                            .cornerRadius(10)
+                    //                    }
+                    //                    .padding(.horizontal)
                 }
+                
             }
-        }
+                
+                
+                .navigationBarItems(leading: Button(action : {
+                    self.mode.wrappedValue.dismiss()
+                }){
+                    Image(systemName: "arrow.left")
+                        .foregroundColor(Color.white)
+                    Text("Back")
+                        .foregroundColor(Color.white)
+                })
+                
+                
+                Spacer()
+            }.navigationBarBackButtonHidden(true)
+            .edgesIgnoringSafeArea(.top)
+            .gesture(DragGesture().updating($dragOffset, body: { (value, state, transaction) in
+                
+                if(value.startLocation.x < 20 && value.translation.width > 100) {
+                    self.mode.wrappedValue.dismiss()
+                }
+            }))
+            
+        
+        
     }
     
     
