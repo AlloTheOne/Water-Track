@@ -9,10 +9,17 @@ import SwiftUI
 
 @main
 struct WaterCalApp: App {
+    @StateObject var vm = CoreDataBootcamp()
     var body: some Scene {
         WindowGroup {
-            Form()
-//            ContentView()
+            
+            if vm.savedEntities.isEmpty {
+                Form()
+            } else {
+                ContentView()
+            }
+           
+            
         }
     }
 }

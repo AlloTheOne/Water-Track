@@ -47,8 +47,6 @@ class CoreDataBootcamp: ObservableObject {
         for x in savedEntities {
             container.viewContext.delete(x)
         }
-        
-        
         saveItems()
     }
     
@@ -186,9 +184,9 @@ struct Form: View {
 //    
                     Spacer()
                     
-                    ForEach(vm.savedEntities) { entity in
-                       // Text(entity.waterIntake ?? 0.0)
-                    }
+//                    ForEach(vm.savedEntities) { entity in
+//                       // Text(entity.waterIntake ?? 0.0)
+//                    }
                     
                     Button {
                         guard !wightIn.isEmpty else { return }
