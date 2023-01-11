@@ -67,8 +67,8 @@ struct Form: View {
     @State var activity = 20
     @State var weather = "cold"
     @State var showDrop: Bool = false
-    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-        @GestureState private var dragOffset = CGSize.zero
+    
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 0){
@@ -90,14 +90,21 @@ struct Form: View {
                 .clipShape(RoundedShape(corners: [.bottomRight]))
                 .ignoresSafeArea()
                 
-                //                VStack {
-                //                    HStack { Spacer() }
-                //                    Text(" ")
-                //                }
-                //                .frame(height: 90)
-                //                .padding(.trailing)
-                //                .background(Color.red)
-                //                .clipShape(RoundedShape(corners: [.topLeft]))
+                VStack(alignment: .leading) {
+                    HStack { Spacer() }
+                    Text("Our Water Calculator ")
+                        .font(.headline)
+                        .padding(.bottom, 5)
+                    Text("Calculate Water Intake")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color("Blue"))
+                        .padding(.bottom)
+                }
+                .frame(height: 90)
+                .padding(.leading)
+                
+                
                 
                 Spacer()
                 VStack {
@@ -124,7 +131,7 @@ struct Form: View {
                     //.font(.headline)
                     .tint(Color.black)
                     .frame(maxWidth: .infinity)
-                    .frame(height: 55)
+                    .frame(height: 65)
                     .background(Color.white)
                     .cornerRadius(10)
                     .shadow(color: Color("lightShadow"), radius: 5, x: 0, y: 0.5)
@@ -151,12 +158,12 @@ struct Form: View {
                     //.font(.headline)
                     .tint(Color.black)
                     .frame(maxWidth: .infinity)
-                    .frame(height: 55)
+                    .frame(height: 65)
                     .background(Color.white)
                     .cornerRadius(10)
                     .shadow(color: Color("lightShadow"), radius: 5, x: 0, y: 0.5)
                     .padding(.horizontal)
-                    .padding(.top)
+                    .padding(.top, 20)
                     
                     
                     //                    LabeledContent {
@@ -208,7 +215,7 @@ struct Form: View {
                             .cornerRadius(10)
                     }
                     .padding(.horizontal)
-                    .padding(.top)
+                    .padding(.bottom, 30)
                     .fullScreenCover(isPresented: $showDrop) {
                         ContentView()
                     }
@@ -229,27 +236,9 @@ struct Form: View {
                 }
                 
             }
-                
-                
-                .navigationBarItems(leading: Button(action : {
-                    self.mode.wrappedValue.dismiss()
-                }){
-                    Image(systemName: "arrow.left")
-                        .foregroundColor(Color.white)
-                    Text("Back")
-                        .foregroundColor(Color.white)
-                })
-                
-                
-                Spacer()
-            }.navigationBarBackButtonHidden(true)
-            .edgesIgnoringSafeArea(.top)
-            .gesture(DragGesture().updating($dragOffset, body: { (value, state, transaction) in
-                
-                if(value.startLocation.x < 20 && value.translation.width > 100) {
-                    self.mode.wrappedValue.dismiss()
-                }
-            }))
+            
+            
+        }.navigationBarBackButtonHidden(true)
             
         
         
@@ -286,3 +275,4 @@ struct Form_Previews: PreviewProvider {
         Form()
     }
 }
+

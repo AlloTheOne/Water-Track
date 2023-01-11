@@ -11,6 +11,7 @@ struct ContentView: View {
     @StateObject var vm = CoreDataBootcamp()
     @State var progress : CGFloat = 0.0
     @State var startAnimation: CGFloat = 0
+    
     var body: some View {
         NavigationView {
             
