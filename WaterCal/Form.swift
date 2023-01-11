@@ -68,25 +68,26 @@ struct Form: View {
     @State var wightIn: String = ""
     @State var activity = 20
     @State var weather = "cold"
+    @State var showDrop: Bool = false
     var body: some View {
         NavigationView {
             VStack(spacing: 0){
                 VStack(alignment: .trailing) {
                     HStack { Spacer() }
-                    Button {
-                    } label: {
-                        Text("Set Interval")
-                            .frame(width: 150)
-                            .frame(height: 55)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                            .padding(.top)
-                    }
+//                    Button {
+//                    } label: {
+//                        Text("Set Interval")
+//                            .frame(width: 150)
+//                            .frame(height: 55)
+//                            .background(Color.white)
+//                            .cornerRadius(10)
+//                            .padding(.top)
+//                    }
                 }
                 .frame(height: 150)
                 .padding(.trailing)
-                .background(Color.blue)
-                .clipShape(RoundedShape(corners: [.bottomLeft]))
+                .background(Color("Blue"))
+                .clipShape(RoundedShape(corners: [.bottomRight]))
                 .ignoresSafeArea()
                 
 //                VStack {
@@ -107,7 +108,7 @@ struct Form: View {
                                 .foregroundColor(Color.white)
                                 .frame(width: 90)
                                 .frame(height: 35)
-                                .background(Color.blue)
+                                .background(Color("Blue"))
                                 .cornerRadius(10)
                                 .padding()
                             //                            .padding(.horizontal)
@@ -140,7 +141,7 @@ struct Form: View {
                             .frame(width: 90)
                             .frame(height: 35)
                             .tint(Color.white)
-                            .background(Color.blue)
+                            .background(Color("Blue"))
                             .cornerRadius(10)
                             .padding(.horizontal)
                     } label: {
@@ -158,31 +159,31 @@ struct Form: View {
                     .padding(.top)
                     
                     
-                    LabeledContent {
-                        Picker("Option Picker", selection: $weather) {
-                            Text("Cold").tag("Cold")
-                            Text("Warm").tag("Warm")
-                            Text("Hot").tag("Hot")
-                        }.pickerStyle(MenuPickerStyle())
-                            .frame(width: 90)
-                            .frame(height: 35)
-                            .tint(Color.white)
-                            .background(Color.blue)
-                            .cornerRadius(10)
-                            .padding(.horizontal)
-                    } label: {
-                        Text("Weather")
-                            .padding(.leading, 70)
-                    }
-                    .tint(Color.black)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 55)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(color: Color("lightShadow"), radius: 5, x: 0, y: 0.5)
-                    .padding(.horizontal)
-                    .padding(.top)
-    
+//                    LabeledContent {
+//                        Picker("Option Picker", selection: $weather) {
+//                            Text("Cold").tag("Cold")
+//                            Text("Warm").tag("Warm")
+//                            Text("Hot").tag("Hot")
+//                        }.pickerStyle(MenuPickerStyle())
+//                            .frame(width: 90)
+//                            .frame(height: 35)
+//                            .tint(Color.white)
+//                            .background(Color("Blue"))
+//                            .cornerRadius(10)
+//                            .padding(.horizontal)
+//                    } label: {
+//                        Text("Weather")
+//                            .padding(.leading, 70)
+//                    }
+//                    .tint(Color.black)
+//                    .frame(maxWidth: .infinity)
+//                    .frame(height: 55)
+//                    .background(Color.white)
+//                    .cornerRadius(10)
+//                    .shadow(color: Color("lightShadow"), radius: 5, x: 0, y: 0.5)
+//                    .padding(.horizontal)
+//                    .padding(.top)
+//    
                     Spacer()
                     
                     ForEach(vm.savedEntities) { entity in
@@ -196,32 +197,35 @@ struct Form: View {
                         //vm.addItem(weightIn: wieghtD ?? 0.0, activityIn: activity, weatherIn: weather)
                         // here i should call calculator
                         wightIn = ""
+                        showDrop.toggle()
                     } label: {
                         Text("Calculate")
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .frame(height: 55)
-                            .background(Color.blue)
+                            .background(Color("Blue"))
                             .cornerRadius(10)
                     }
                     .padding(.horizontal)
                     .padding(.top)
-                    
-                    Button {
-                        guard !wightIn.isEmpty else { return }
-//                        vm.addItem(activityIn: wightIn)
-                        wightIn = ""
-                    } label: {
-                        Text("Reset")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 55)
-                            .background(Color("lightShadow"))
-                            .cornerRadius(10)
+                    .fullScreenCover(isPresented: $showDrop) {
+                        ContentView()
                     }
-                    .padding(.horizontal)
+//                    Button {
+//                        guard !wightIn.isEmpty else { return }
+////                        vm.addItem(activityIn: wightIn)
+//                        wightIn = ""
+//                    } label: {
+//                        Text("Reset")
+//                            .font(.headline)
+//                            .foregroundColor(.white)
+//                            .frame(maxWidth: .infinity)
+//                            .frame(height: 55)
+//                            .background(Color("lightShadow"))
+//                            .cornerRadius(10)
+//                    }
+//                    .padding(.horizontal)
                 }
             }
         }

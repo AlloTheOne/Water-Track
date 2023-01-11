@@ -11,8 +11,8 @@ import SwiftUI
 struct WaterCalApp: App {
     var body: some Scene {
         WindowGroup {
-//            Form()
-            ContentView()
+            Form()
+//            ContentView()
         }
     }
 }
