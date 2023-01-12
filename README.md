@@ -1,4 +1,4 @@
-# Water Calculate
+# WaterCal
 # Big Idea :
 ### Inclusion
 # Challenge Statement :
