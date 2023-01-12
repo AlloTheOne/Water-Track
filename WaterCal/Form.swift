@@ -125,7 +125,7 @@ struct Form: View {
                             VStack(alignment: .trailing) {
                                 TextField("", text: $wightIn)
                                     .padding(.leading, 35)
-                                //                                .keyboardType(.decimalPad)
+                                    .keyboardType(.decimalPad)
                                     .focused($amountIsFocused)
                                     .foregroundColor(Color.white)
                                     .frame(width: 90)
