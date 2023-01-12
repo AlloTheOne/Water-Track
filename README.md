@@ -14,5 +14,5 @@
 # Demo of Our App :
 
 # Challenge Summary :
-###  We start working in this project including  generate idea, Designing and codeing for 10 days , we face some challenging to finish up , so  due to the insufficient time we could not complete all futures we have in app , future work to make a button that notify user each interval time to remind them to drink water .
+###  We start working in this project including  generate idea, Design and code for 10 days , we face some challenging to finish up , so  due to the insufficient time we could not complete all futures we have in app , future work to make a button that notify user each interval time to remind them to drink water .
 
