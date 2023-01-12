@@ -1,5 +1,5 @@
 # Water
 # Challenge Statement :
-### Make an inclusive solution that help People who need a reminder to drink water daily and constantly
+### Make an inclusive solution that help People who a wants to know their daily water need and reminder to drink water constantly .
 # Big Idea :
-### An App that provides a way for people who needs to know their water daily need and reminder to remind them by notifications .
+### An App that provides a way for people who needs to know their daily water need and reminder to remind them by notifications .
