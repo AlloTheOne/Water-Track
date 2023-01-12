@@ -1,6 +1,6 @@
 # Water Calculate
 # Big Idea :
-### Utilites
+### Inclusion
 # Challenge Statement :
 ### People need to know their advised water intake and a reminder to drink the water
 # Soluation Concept : 
@@ -12,7 +12,7 @@
 4. Accessibility : Voice Over 
 5. Figma 
 # Demo of Our App :
-
+### [Demo with Voiceover] (https://contattafiles.s3.us-west-1.amazonaws.com/tnt41680/z1x7hANJrvwxYSW/RPReplay_Final1673517405.mov)
 # Challenge Summary :
-###  We start working in this project including  generate idea, Design and code for 10 days , we face some challenging to finish up , so  due to the insufficient time we could not complete all futures we have in app , future work to make a button that notify user each interval time to remind them to drink water .
+### 
 
