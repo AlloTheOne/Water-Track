@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  WaterCal
+
+  Created by sumayah on 19/06/1444 AH.
+  
+*/
+"Our Water Calculator" =  " حاسبة الماء";
+"Calculate Water Intake" = "احسب كمية الماء التي يحتاجها جسمك";
+"your weight in kg" = "ادخل وزنك بالكيلوجرام";
+"Activity in minutes"="نشاطك بالدقائق";
+"Calculate" = "احسب";
+"Re Calculate" = "اعادة الحساب";
+"Your Daily Water Intake :" = "كمية الماء التي يحتاجها جسمك ";
+"Liters" = "ليترات";
+"Cups" = "كوب";

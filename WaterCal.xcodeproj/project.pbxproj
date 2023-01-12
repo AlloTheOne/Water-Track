@@ -14,6 +14,7 @@
 		5989C49F296E9C4D00EC7FDD /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5989C49E296E9C4D00EC7FDD /* Form.swift */; };
 		5989C4A2296E9D6B00EC7FDD /* WaterContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5989C4A0296E9D6B00EC7FDD /* WaterContainer.xcdatamodeld */; };
 		5989C4A5296EA1EF00EC7FDD /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5989C4A4296EA1EF00EC7FDD /* RoundedShape.swift */; };
+		E06116BB296FE2E90063307A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E06116BD296FE2E90063307A /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,8 @@
 		5989C49E296E9C4D00EC7FDD /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		5989C4A1296E9D6B00EC7FDD /* WaterContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WaterContainer.xcdatamodel; sourceTree = "<group>"; };
 		5989C4A4296EA1EF00EC7FDD /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
+		E06116BC296FE2E90063307A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E06116BE296FE2ED0063307A /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +44,7 @@
 		5989C484296E9C1B00EC7FDD = {
 			isa = PBXGroup;
 			children = (
+				E06116BD296FE2E90063307A /* Localizable.strings */,
 				5989C48F296E9C1B00EC7FDD /* WaterCal */,
 				5989C48E296E9C1B00EC7FDD /* Products */,
 			);
@@ -126,6 +130,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 5989C484296E9C1B00EC7FDD;
 			productRefGroup = 5989C48E296E9C1B00EC7FDD /* Products */;
@@ -143,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5989C498296E9C1C00EC7FDD /* Preview Assets.xcassets in Resources */,
+				E06116BB296FE2E90063307A /* Localizable.strings in Resources */,
 				5989C495296E9C1C00EC7FDD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,6 +169,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E06116BD296FE2E90063307A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E06116BC296FE2E90063307A /* en */,
+				E06116BE296FE2ED0063307A /* ar */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5989C499296E9C1C00EC7FDD /* Debug */ = {
