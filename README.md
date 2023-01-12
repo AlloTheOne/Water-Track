@@ -9,7 +9,9 @@
 # Technologies & Tools :
 1. Xcode
 2. Core data 
-3. Figma 
+3. Locallization 
+4. Accessibility : Voice Over 
+5. Figma 
 # Demo of Our App :
 
 # Challenge Summary :
