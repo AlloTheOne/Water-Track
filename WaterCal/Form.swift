@@ -41,7 +41,7 @@ class CoreDataBootcamp: ObservableObject {
             saveItems()
         }
     }
-    
+ 
     func resetAllCoreData() {
          // get all entities and loop over them
         
@@ -70,7 +70,10 @@ struct Form: View {
     @State var showDrop: Bool = false
     @FocusState private var amountIsFocused: Bool
     
+        
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    @GestureState private var dragOffset = CGSize.zero
     var body: some View {
         NavigationView {
             VStack(spacing: 0){
@@ -116,7 +119,7 @@ struct Form: View {
                                 .background(Color("Blue"))
                                 .cornerRadius(10)
                                 .padding()
-                            //                            .padding(.horizontal)
+                            //       .padding(.horizontal)
                             //.padding(.leading, 80)
                             
                             
@@ -164,19 +167,14 @@ struct Form: View {
                     .shadow(color: Color("lightShadow"), radius: 5, x: 0, y: 0.5)
                     .padding(.horizontal)
                     .padding(.top, 20)
-                    
-                    
-              
-            
+        
                     Spacer()
-                    
-                
-                    
+
                     Button {
                         guard !wightIn.isEmpty else { return }
                         let wieghtD = Double(wightIn)
                         Calculator(weightIn: wieghtD ?? 0.0, activityIn: activity, weatherIn: weather)
-                        //vm.addItem(weightIn: wieghtD ?? 0.0, activityIn: activity, weatherIn: weather)
+                        
                         // here i should call calculator
                         wightIn = ""
                         showDrop.toggle()
@@ -208,8 +206,32 @@ struct Form: View {
                     }
                 }
             }
-        }.navigationBarBackButtonHidden(true)
             
+            .navigationBarItems(leading: Button(action : {
+                self.mode.wrappedValue.dismiss()
+            }){
+                if !vm.savedEntities.isEmpty {
+                    Image(systemName: "arrow.left")
+                        .foregroundColor(Color.white)
+                }
+            })
+            .frame(maxWidth: .infinity, maxHeight : .infinity)
+            
+            
+        Spacer()
+    
+    .edgesIgnoringSafeArea(.top)
+    .gesture(DragGesture().updating($dragOffset, body: { (value, state, transaction) in
+    
+        if(value.startLocation.x < 20 && value.translation.width > 100) {
+            self.mode.wrappedValue.dismiss()
+        }
+        
+    }))
+        }
+        .navigationBarBackButtonHidden(true)
+            
+                     
             
         
         

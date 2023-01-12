@@ -114,6 +114,7 @@ struct ContentView: View {
                                         if progress < 0.99  {
                                             
                                             progress += 0.1
+                                    
                                             
                                         }
                                     } label: {
@@ -131,6 +132,7 @@ struct ContentView: View {
                                     Button{
                                         if progress > 0.09 {
                                             progress -= 0.1
+                                          //  vm.addProgress(progress: progress)
                                         }
                                     } label: {
                                         Image(systemName: "minus")

@@ -12,5 +12,7 @@
 "Calculate" = "احسب";
 "Re Calculate" = "اعادة الحساب";
 "Your Daily Water Intake :" = "كمية الماء التي يحتاجها جسمك ";
-"Liters" = "ليترات";
-"Cups" = "كوب";
+" Liters" = "ليترات";
+" Cups" = "كوب";
+"Done" = "تم";
+"drop.fill" = "قطرة";
