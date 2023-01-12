@@ -86,7 +86,7 @@ struct Form: View {
                 
                 VStack(alignment: .leading) {
                     HStack { Spacer() }
-                    Text("Our Water Calculator ")
+                    Text("Our Water Calculator")
                         .font(.headline)
                         .padding(.bottom, 5)
                     Text("Calculate Water Intake")
