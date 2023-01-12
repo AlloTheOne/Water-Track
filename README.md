@@ -12,7 +12,7 @@
 4. Accessibility : Voice Over 
 5. Figma 
 # Demo of Our App :
- ..* [Demo with Voiceover](https://contattafiles.s3.us-west-1.amazonaws.com/tnt41680/z1x7hANJrvwxYSW/RPReplay_Final1673517405.mov) 
+ * [Demo with Voiceover](https://contattafiles.s3.us-west-1.amazonaws.com/tnt41680/z1x7hANJrvwxYSW/RPReplay_Final1673517405.mov) 
 # Challenge Summary :
 ### 
 
