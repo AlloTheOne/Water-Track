@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 
+
 class CoreDataBootcamp: ObservableObject {
     let container: NSPersistentContainer
      @Published var savedEntities: [WaterEntity] = []
@@ -67,6 +68,7 @@ struct Form: View {
     @State var activity = 20
     @State var weather = "cold"
     @State var showDrop: Bool = false
+    @FocusState private var amountIsFocused: Bool
     
     
     var body: some View {
@@ -74,15 +76,7 @@ struct Form: View {
             VStack(spacing: 0){
                 VStack(alignment: .trailing) {
                     HStack { Spacer() }
-                    //                    Button {
-                    //                    } label: {
-                    //                        Text("Set Interval")
-                    //                            .frame(width: 150)
-                    //                            .frame(height: 55)
-                    //                            .background(Color.white)
-                    //                            .cornerRadius(10)
-                    //                            .padding(.top)
-                    //                    }
+                 
                 }
                 .frame(height: 150)
                 .padding(.trailing)
@@ -112,6 +106,8 @@ struct Form: View {
                         VStack(alignment: .trailing) {
                             TextField("", text: $wightIn)
                                 .padding(.leading, 35)
+                                .keyboardType(.decimalPad)
+                                .focused($amountIsFocused)
                                 .foregroundColor(Color.white)
                                 .frame(width: 90)
                                 .frame(height: 35)
@@ -127,8 +123,10 @@ struct Form: View {
                     } label: {
                         Text("your weight in kg")
                             .padding(.leading, 30)
+                            
                     }
                     //.font(.headline)
+                    
                     .tint(Color.black)
                     .frame(maxWidth: .infinity)
                     .frame(height: 65)
@@ -166,36 +164,11 @@ struct Form: View {
                     .padding(.top, 20)
                     
                     
-                    //                    LabeledContent {
-                    //                        Picker("Option Picker", selection: $weather) {
-                    //                            Text("Cold").tag("Cold")
-                    //                            Text("Warm").tag("Warm")
-                    //                            Text("Hot").tag("Hot")
-                    //                        }.pickerStyle(MenuPickerStyle())
-                    //                            .frame(width: 90)
-                    //                            .frame(height: 35)
-                    //                            .tint(Color.white)
-                    //                            .background(Color("Blue"))
-                    //                            .cornerRadius(10)
-                    //                            .padding(.horizontal)
-                    //                    } label: {
-                    //                        Text("Weather")
-                    //                            .padding(.leading, 70)
-                    //                    }
-                    //                    .tint(Color.black)
-                    //                    .frame(maxWidth: .infinity)
-                    //                    .frame(height: 55)
-                    //                    .background(Color.white)
-                    //                    .cornerRadius(10)
-                    //                    .shadow(color: Color("lightShadow"), radius: 5, x: 0, y: 0.5)
-                    //                    .padding(.horizontal)
-                    //                    .padding(.top)
-                    //
+              
+            
                     Spacer()
                     
-                    //                    ForEach(vm.savedEntities) { entity in
-                    //                       // Text(entity.waterIntake ?? 0.0)
-                    //                    }
+                
                     
                     Button {
                         guard !wightIn.isEmpty else { return }
@@ -219,26 +192,22 @@ struct Form: View {
                     .fullScreenCover(isPresented: $showDrop) {
                         ContentView()
                     }
-                    //                    Button {
-                    //                        guard !wightIn.isEmpty else { return }
-                    ////                        vm.addItem(activityIn: wightIn)
-                    //                        wightIn = ""
-                    //                    } label: {
-                    //                        Text("Reset")
-                    //                            .font(.headline)
-                    //                            .foregroundColor(.white)
-                    //                            .frame(maxWidth: .infinity)
-                    //                            .frame(height: 55)
-                    //                            .background(Color("lightShadow"))
-                    //                            .cornerRadius(10)
-                    //                    }
-                    //                    .padding(.horizontal)
+                   
                 }
                 
             }
             
-            
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    
+                    Button("Done") {
+                        amountIsFocused = false
+                    }
+                }
+            }
         }.navigationBarBackButtonHidden(true)
+            
             
         
         

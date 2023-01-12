@@ -14,10 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            
-            
             VStack{
-                
                 VStack {
                     HStack{
                         NavigationLink {
@@ -42,6 +39,7 @@ struct ContentView: View {
                 VStack( spacing: 10){
                     
                     Text("Your Daily Water Intake :")
+                        .padding(.top)
                     ForEach(vm.savedEntities) { entity in
                         Text("\((String(format: "%.2f", entity.waterIntake ))) Liters")
                         Text("≈")
@@ -147,7 +145,7 @@ struct ContentView: View {
                                 
                         }
                         
-       //.frame(width: size.width, height: size.height, alignment: .center)
+       
                         
                         .onAppear {
                             // Loading Animation
@@ -158,7 +156,7 @@ struct ContentView: View {
                         }
                     }
                     .frame(height: 350)
-                    //Slider(value: $progress)
+                   
                     Text("\(Int((progress * 100).rounded()))%").bold()
                         .padding()
                 }
