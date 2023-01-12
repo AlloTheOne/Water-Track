@@ -99,6 +99,7 @@ struct Form: View {
                         .fontWeight(.semibold)
                         .foregroundColor(Color("Blue"))
                         .padding(.bottom)
+                        .accessibilityAddTraits(.isHeader)
                 }
                 .frame(height: 90)
                 .padding(.leading)
@@ -107,41 +108,50 @@ struct Form: View {
                 
                 Spacer()
                 VStack {
-                    LabeledContent {
-                        VStack(alignment: .trailing) {
-                            TextField("", text: $wightIn)
-                                .padding(.leading, 35)
-                                .keyboardType(.decimalPad)
-                                .focused($amountIsFocused)
-                                .foregroundColor(Color.white)
-                                .frame(width: 90)
-                                .frame(height: 35)
-                                .background(Color("Blue"))
-                                .cornerRadius(10)
-                                .padding()
-                            //       .padding(.horizontal)
-                            //.padding(.leading, 80)
-                            
-                            
-                            
+                    if UIAccessibility.isVoiceOverRunning {
+                        TextField("Enter your weight in kilo grams", text: $wightIn)
+                            .padding(.horizontal)
+                            .tint(Color.black)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 65)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                            .shadow(color: Color("lightShadow"), radius: 5, x: 0, y: 0.5)
+                            .padding(.horizontal)
+                            .padding(.top)
+                            .focused($amountIsFocused)
+                    } else {
+                        LabeledContent {
+                            VStack(alignment: .trailing) {
+                                TextField("", text: $wightIn)
+                                    .padding(.leading, 35)
+                                //                                .keyboardType(.decimalPad)
+                                    .focused($amountIsFocused)
+                                    .foregroundColor(Color.white)
+                                    .frame(width: 90)
+                                    .frame(height: 35)
+                                    .background(Color("Blue"))
+                                    .cornerRadius(10)
+                                    .padding()
+                                //       .padding(.horizontal)
+                                //.padding(.leading, 80)
+                            }
+                        } label: {
+                            Text("your weight in kg")
+                                .padding(.leading, 30)
                         }
-                    } label: {
-                        Text("your weight in kg")
-                            .padding(.leading, 30)
-                            
+                        
+                        
+                        //.font(.headline)
+                        .tint(Color.black)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 65)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(color: Color("lightShadow"), radius: 5, x: 0, y: 0.5)
+                        .padding(.horizontal)
+                        .padding(.top)
                     }
-                    //.font(.headline)
-                    
-                    .tint(Color.black)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 65)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(color: Color("lightShadow"), radius: 5, x: 0, y: 0.5)
-                    .padding(.horizontal)
-                    .padding(.top)
-                    
-                    
                     LabeledContent {
                         Picker("Option Picker", selection: $activity) {
                             Text("20").tag(20)
@@ -200,7 +210,7 @@ struct Form: View {
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
-                    
+
                     Button("Done") {
                         amountIsFocused = false
                     }
