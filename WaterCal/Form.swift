@@ -96,6 +96,8 @@ struct Form: View {
                         .font(.headline)
                         .padding(.bottom, 5)
                     Text("Calculate Water Intake")
+                        .scaledToFit()
+                        .minimumScaleFactor(0.01)
                         .font(.title)
                         .fontWeight(.semibold)
                         .foregroundColor(Color("Blue"))
