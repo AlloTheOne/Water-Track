@@ -10,8 +10,9 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var vm = CoreDataBootcamp()
     @State var progress : CGFloat = 0.0
+    @State var z: Int = 0
     @State var startAnimation: CGFloat = 0
-    
+    var cup: String?
     var body: some View {
         NavigationView {
             VStack{
@@ -38,12 +39,21 @@ struct ContentView: View {
                 }
                 VStack( spacing: 10){
                     
-                    Text("Your Daily Water Intake :")
+                    Text("Your Daily Water Intake Is:")
+                        .foregroundColor(Color.black)
+                        .font(.headline)
                         .padding(.top)
                     ForEach(vm.savedEntities) { entity in
+                        let cup = Int((entity.waterIntake * 3.51951).rounded(.up))
                         Text("\((String(format: "%.2f", entity.waterIntake ))) Liters")
+                            .foregroundColor(Color.black)
+                            .font(.headline)
                         Text("≈")
-                        Text("\(Int((entity.waterIntake * 3.51951).rounded(.up))) Cups")
+                            .foregroundColor(Color.black)
+                            .font(.headline)
+                        Text("\(cup) Cups")
+                            .foregroundColor(Color.black)
+                            .font(.headline)
                         
                     }
                     
@@ -111,12 +121,24 @@ struct ContentView: View {
                             
                                 .overlay(alignment: .bottomTrailing){
                                     Button{
-                                        if progress < 0.99  {
-                                            
-                                            progress += 0.1
-                                    
-                                            
-                                        }
+//                                        for x in vm.savedEntities {
+//                                            let cup = Int((x.waterIntake * 3.51951).rounded(.up))
+//                                            let cupCG = CGFloat(cup)
+//                                            if progress * 10 < cupCG {
+//
+//
+//
+//
+//                                                    progress += 0.1
+//
+//                                                print(Int((progress / cupCG * 1000)))
+//                                                let z = Int((progress / cupCG * 1000))
+//                                                //Text("\(Int((progress / cupCG * 1000)))")
+////                                                Text("\(z)")
+//                                            }
+//                                        }
+                                        addProgress()
+                                        
                                     } label: {
                                         Image(systemName: "plus")
                                             .font(.system(size: 40, weight: .black))
@@ -130,10 +152,11 @@ struct ContentView: View {
                             //.padding([.top, .trailing])
                                 .overlay(alignment: .bottomLeading){
                                     Button{
-                                        if progress > 0.09 {
-                                            progress -= 0.1
-                                          //  vm.addProgress(progress: progress)
-                                        }
+//                                        if progress > 0.09 {
+//                                            progress -= 0.1
+//                                          //  vm.addProgress(progress: progress)
+//                                        }
+                                        removeProgress()
                                     } label: {
                                         Image(systemName: "minus")
                                             .font(.system(size: 40, weight: .black))
@@ -158,9 +181,22 @@ struct ContentView: View {
                         }
                     }
                     .frame(height: 350)
-                   
-                    Text("\(Int((progress * 100).rounded()))%").bold()
+                  // Text("\(cup)")
+//                    ForEach(vm.savedEntities) { entity in
+//                        let cup = Int((entity.waterIntake * 3.51951).rounded(.up))
+////                        Text("\(cup) Cups")
+////                        Text("\(Int((progress / cup * 100).rounded()))%").bold()
+////                            .padding()
+//                    }
+//                    Text("\(Int((progress * 100).rounded()))%").bold()
+//                        .padding()
+//                    Text("\(Int((progress * 100).rounded()))%").bold()
+                    Text("\(z) %")
+                        .foregroundColor(Color.black)
+                        .font(.headline)
                         .padding()
+//                    addProgress()
+//
                 }
                 .padding(.horizontal, 20)
             }
@@ -172,6 +208,39 @@ struct ContentView: View {
         }
         
         
+    }
+    
+    func addProgress(){
+        for x in vm.savedEntities {
+            let cup = Int((x.waterIntake * 3.51951).rounded(.up))
+            let cupCG = CGFloat(cup)
+            if progress * 10 < cupCG {
+                if z >= 85 && z <= 100 && progress > 0.5 {
+                    z = 100
+                } else{
+  
+                    progress += 0.1
+                    z = Int((progress / cupCG * 1000))
+                }
+
+            }
+        }
+    }
+    func removeProgress() {
+        for x in vm.savedEntities {
+            let cup = Int((x.waterIntake * 3.51951).rounded(.up))
+            let cupCG = CGFloat(cup)
+            if progress * 10 < cupCG {
+                if  progress > 0.09 {
+                    
+               
+  
+                    progress -= 0.1
+                    z = Int((progress / cupCG * 1000))
+                }
+
+            }
+        }
     }
 }
 struct ContentView_Previews: PreviewProvider {

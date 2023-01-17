@@ -90,6 +90,7 @@ struct Form: View {
                 VStack(alignment: .leading) {
                     HStack { Spacer() }
                     Text("Our Water Calculator")
+                        .foregroundColor(Color.black)
                         .font(.headline)
                         .padding(.bottom, 5)
                     Text("Calculate Water Intake")
@@ -138,6 +139,7 @@ struct Form: View {
                             }
                         } label: {
                             Text("your weight in kg")
+                                .foregroundColor(Color.black)
                                 .padding(.leading, 30)
                         }
                         
@@ -166,6 +168,7 @@ struct Form: View {
                             .padding(.horizontal)
                     } label: {
                         Text("Activity in minutes")
+                            .foregroundColor(Color.black)
                             .padding(.leading, 40)
                     }
                     //.font(.headline)
@@ -206,7 +209,7 @@ struct Form: View {
                 }
                 
             }
-            
+            .background(Color.white)
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
