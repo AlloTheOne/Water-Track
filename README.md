@@ -1,10 +1,10 @@
 # WaterCal
 ## Big Idea :
-### Inclusion
+#### Inclusion
 ## Challenge Statement :
-### People need to know their advised water intake and a reminder to drink the water
+#### People need to know their advised water intake and a reminder to drink the water
 ## Soluation Concept : 
-### A place for people who need to know their daily need for water and need a reminder to remind them, so that they don't forget to drink water daily and constantly .
+#### A place for people who need to know their daily need for water and need a reminder to remind them, so that they don't forget to drink water daily and constantly .
 ## Technologies & Tools :
 1. Xcode
 2. Core data 
