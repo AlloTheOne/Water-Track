@@ -71,7 +71,7 @@ struct ContentView: View {
                                 .renderingMode(.template)
                                 .aspectRatio(contentMode: .fit)
                                 .foregroundColor(.white)
-                            
+                                .padding()
                             //Streching in x Axis
                                 .scaleEffect(x: 1.1,y: 1)
                                 .offset(y: -1)
@@ -116,7 +116,9 @@ struct ContentView: View {
                                         .resizable()
                                         .renderingMode(.template)
                                         .aspectRatio(contentMode: .fit)
+                                        
                                 }
+                                .padding()
                             //Add Button
                             
                                 .overlay(alignment: .bottomTrailing){
@@ -140,13 +142,20 @@ struct ContentView: View {
                                         addProgress()
                                         
                                     } label: {
-                                        Image(systemName: "plus")
-                                            .font(.system(size: 40, weight: .black))
-                                            .foregroundColor(Color("Blue"))
-                                            .shadow(radius: 2)
-                                            .padding(8)
-                                            .background(.white,in: Circle())
-                                        
+                                        VStack{
+                                            Image(systemName: "plus")
+                                                .font(.system(size: 40, weight: .black))
+                                                .foregroundColor(Color("Blue"))
+                                                .shadow(radius: 2)
+                                                .padding(8)
+                                                .background(.white,in: Circle())
+                                            Text("1 Cup")
+                                                .foregroundColor(Color.black)
+                                                .font(.headline)
+                                            Text("250 mL")
+                                                .foregroundColor(Color.black)
+                                                .font(.headline)
+                                        }
                                     }
                                 }
                             //.padding([.top, .trailing])
@@ -158,13 +167,20 @@ struct ContentView: View {
 //                                        }
                                         removeProgress()
                                     } label: {
-                                        Image(systemName: "minus")
-                                            .font(.system(size: 40, weight: .black))
-                                            .foregroundColor(Color("Blue"))
-                                            .shadow(radius: 2)
-                                            .padding(20)
-                                            .background(.white,in: Circle())
-                                            
+                                        VStack{
+                                            Image(systemName: "minus")
+                                                .font(.system(size: 40, weight: .black))
+                                                .foregroundColor(Color("Blue"))
+                                                .shadow(radius: 2)
+                                                .padding(20)
+                                                .background(.white,in: Circle())
+                                            Text("1 Cup")
+                                                .foregroundColor(Color.black)
+                                                .font(.headline)
+                                            Text("250 mL")
+                                                .foregroundColor(Color.black)
+                                                .font(.headline)
+                                        }
                                     }
                                 }
                                 
